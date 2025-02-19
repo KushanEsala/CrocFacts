@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crocodile Fun Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            padding: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #factDisplay {
+            margin: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Crocodile Fun Facts</h1>
+    <div id="factDisplay">Click the button to see a fun fact!</div>
+    <button id="randomFactButton">Show Random Fact</button>
+    <button id="shareButton">Share on Twitter</button>
+
+    <script>
+        const facts = [
+            "Crocodiles can live for over 70 years in the wild.",
+            "They are known to be one of the oldest living species, having existed for around 200 million years.",
+            "Crocodiles have a powerful bite, with a bite force of over 3,700 pounds per square inch.",
+            "They can hold their breath underwater for up to an hour while waiting for prey.",
+            "Crocodiles are cold-blooded reptiles, which means their body temperature is regulated by their environment.",
+            "They have a unique way of communicating, using a range of vocalizations, including growls and hisses.",
+            "Crocodiles can run on land at speeds of up to 20 miles per hour for short distances.",
+            "Their eyes have a special membrane that allows them to see clearly underwater.",
+            "Crocodiles are carnivorous and primarily eat fish, birds, and mammals.",
+            "They are known to be very territorial and will defend their territory aggressively."
+        ];
+
+        document.getElementById('randomFactButton').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const selectedFact = facts[randomIndex];
+            document.getElementById('factDisplay').innerText = selectedFact;
+            document.getElementById('shareButton').setAttribute('data-fact', selectedFact);
+        });
+
+        document.getElementById('shareButton').addEventListener('click', function() {
+            const factToShare = this.getAttribute('data-fact');
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(factToShare)}`;
+            window.open(twitterUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
